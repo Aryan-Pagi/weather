@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHT22 Sensor Readings</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #chartContainer {
+            width: 80%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>DHT22 Sensor Readings</h1>
+    <div id="chartContainer">
+        <canvas id="sensorChart"></canvas>
+    </div>
+    <button id="updateButton">Get Sensor Readings</button>
+
+    <script>
+        const ctx = document.getElementById('sensorChart').getContext('2d');
+        const data = {
+            labels: [],
+            datasets: [
+                {
+                    label: 'Temperature (°C)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    data: [],
+                    fill: true,
+                },
+                {
+                    label: 'Humidity (%)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    data: [],
+                    fill: true,
+                }
+            ]
+        };
+
+        const sensorChart = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Time'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Value'
+                        }
+                    }
+                }
+            }
+        });
+
+        document.getElementById('updateButton').addEventListener('click', function() {
+            // Simulating sensor data input
+            const temperature = Math.random() * 30; // Replace with actual sensor data
+            const humidity = Math.random() * 100; // Replace with actual sensor data
+            const timeStamp = new Date().toLocaleTimeString();
+
+            // Update the chart
+            if (data.labels.length >= 10) {
+                data.labels.shift();
+                data.datasets[0].data.shift();
+                data.datasets[1].data.shift();
+            }
+            data.labels.push(timeStamp);
+            data.datasets[0].data.push(temperature);
+            data.datasets[1].data.push(humidity);
+
+            sensorChart.update();
+        });
+    </script>
+</body>
+</html>

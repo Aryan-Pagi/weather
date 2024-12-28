@@ -1,0 +1,60 @@
+*{
+     margin: 0;
+    padding: 0;
+}
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.card{
+   
+    background:linear-gradient(to bottom right,rgb(17, 122, 78),rgb(181, 135, 135),rgb(29, 132, 89),rgb(216, 169, 169));
+    width: 500px;
+    margin: 50px;
+    border-radius: 20px;
+}
+.main{
+     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input{
+    width: 300px;
+    height: 40px;
+    border-radius: 20px;
+    margin: 15px;
+    padding-left: 10px;
+}
+.search{
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    border: solid 1px;
+}
+.city{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.city h1{
+    color: rgb(255, 253, 255);
+    font-size: 50px;
+}
+.city h2{
+    color: rgb(255, 253, 255);
+    font-size: 30px;
+}
+.city img{
+    width: 150px;
+}
+.extra img{
+    width: 60px;
+}
+.extra{
+    display: flex;
+    padding: 20px;
+    justify-content: space-around;
+}
